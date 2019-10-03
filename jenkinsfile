@@ -1,0 +1,17 @@
+pipeline {
+    agent { label 'aws' }
+
+    options {
+        disableConcurrentBuilds()
+        buildDiscarder(logRotator(numToKeepStr: '3', daysToKeepStr: '3'))
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                sh "ls -l"
+            }
+        }
+    }
+}
